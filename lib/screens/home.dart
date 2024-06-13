@@ -37,7 +37,7 @@ class _HomeScreenState extends State<HomeScreen> {
       body: Container(),
       floatingActionButton: FloatingActionButton(
         onPressed: () {
-          Navigator.pushNamed(context, '/add');
+          Navigator.pushNamed(context, '/addTodo');
         },
         child: Icon(Icons.add),
         backgroundColor: Colors.greenAccent,

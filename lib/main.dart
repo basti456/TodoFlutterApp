@@ -1,7 +1,7 @@
-import 'package:firebase_auth/firebase_auth.dart';
 import 'package:firebase_core/firebase_core.dart';
 import 'package:flutter/material.dart';
 import 'package:todo_app/firebase_options.dart';
+import 'package:todo_app/screens/addtodo.dart';
 import 'package:todo_app/screens/authscreen.dart';
 import 'package:todo_app/screens/home.dart';
 import 'package:todo_app/screens/splashscreen.dart';
@@ -24,7 +24,8 @@ class MyApp extends StatelessWidget {
       routes: {
         '/': (context) => const SplashScreen(),
         '/home': (context) => const HomeScreen(),
-        '/auth': (context) => const AuthScreen()
+        '/auth': (context) => const AuthScreen(),
+        '/addTodo':(context) => const AddTodoScreen()
       },
     );
   }
