@@ -4,6 +4,8 @@ import 'package:flutter/material.dart';
 import 'package:google_fonts/google_fonts.dart';
 import 'package:logger/logger.dart';
 
+
+
 class AuthForm extends StatefulWidget {
   const AuthForm({super.key});
 
@@ -33,11 +35,14 @@ class _AuthFormState extends State<AuthForm> {
           _isLoading = true;
         });
         if (_isLogin) {
-          authResult = await auth.signInWithEmailAndPassword(
-              email: email, password: password);
+          await auth.signInWithEmailAndPassword(
+              email: email, password: password).then((_){
+                Navigator.pushReplacementNamed(context, '/home');
+              });
         } else {
           authResult = await auth.createUserWithEmailAndPassword(
               email: email, password: password);
+
           String uid = authResult.user!.uid;
           await FirebaseFirestore.instance
               .collection('users')
@@ -47,6 +52,7 @@ class _AuthFormState extends State<AuthForm> {
             ScaffoldMessenger.of(context).showSnackBar(
               const SnackBar(content: Text("Registered sucessfully")),
             );
+            Navigator.pushReplacementNamed(context, '/home');
           }).catchError((error) {
             logger.e("Failed to add user data to Firestore: $error");
             ScaffoldMessenger.of(context).showSnackBar(

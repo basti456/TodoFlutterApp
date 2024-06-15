@@ -45,7 +45,6 @@ class _AddTodoScreenState extends State<AddTodoScreen> {
           SnackBar(content: Text("Failed to add task: $error")),
         );
       });
-      ;
     } catch (e) {
       logger.d("Exception - $e");
     } finally {
@@ -114,6 +113,7 @@ class _AddTodoScreenState extends State<AddTodoScreen> {
                   child: ElevatedButton(
                     onPressed: () {
                       addTaskToDatabase();
+                      //Navigator.pop(context);
                     },
                     style: ElevatedButton.styleFrom(
                       backgroundColor: Colors.blue,
